@@ -13,6 +13,7 @@ export class TableComponent implements OnInit {
     this.dataSource.forEach((item: { id: any; }, index: any) => {
       if(item.id === id) this.dataSource.splice(index, 1);
     });
+
   }
 
   ngOnInit() {}

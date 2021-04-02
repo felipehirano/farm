@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="title">Registro de Fazendas</div>
+  <form (ngSubmit)="addFarm()" #Form="ngForm" ngNativeValidate>
+    <div class="user-details">
+      <div class="input-box">
+        <span class="details">Nome Proprietário:</span>
+        <input type="text"
+        required
+        [(ngModel)]="model.name" name="name">
+      </div>
+      <div class="input-box">
+        <span class="details">Área da Fazenda:</span>
+        <input type="number"
+        required
+        onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
+        [(ngModel)]="model.area" name="area">
+      </div>
+    </div>
+    <div class="button">
+      <input type="submit" name="registrar" value="Registrar">
+    </div>
+  </form>
+</div>

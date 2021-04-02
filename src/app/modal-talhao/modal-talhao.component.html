@@ -1,0 +1,45 @@
+<div class="modal-body">
+  <div class="container">
+    <div class="title">Registro de Talhões</div>
+    <form (ngSubmit)="addTalhao()" #Form="ngForm" ngNativeValidate>
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Área do Talhão:</span>
+          <input type="number"
+          required
+          onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
+          [(ngModel)]="model.area" name="area">
+        </div>
+        <div class="input-box">
+          <span class="details">Qtd.Produtos</span>
+          <input type="number"
+          onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
+          required
+          [(ngModel)]="model.qtdProdutos" name="qtdProdutos">
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" name="registrar" value="Registrar">
+      </div>
+    </form>
+    <table *ngIf="dataSourceTalhao.length" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Área</th>
+          <th>QtdProdutos</th>
+          <th>Produtividade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataSourceTalhao">
+          <td>{{item.area}}</td>
+          <td>{{item.qtdProdutos}}</td>
+          <td>{{item.produtividade}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+

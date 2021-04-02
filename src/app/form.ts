@@ -7,3 +7,14 @@ export class Form {
   ) {  }
 
 }
+
+export class FormTalhao {
+  static valid: any;
+
+  constructor(
+    public area: any,
+    public qtdProdutos: any,
+    public produtividade: any,
+  ) {  }
+
+}

@@ -9,18 +9,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatTableModule} from '@angular/material/table';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalTalhaoComponent } from './modal-talhao/modal-talhao.component';
+import { TableTalhaoComponent } from './table-talhao/table-talhao.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    TableComponent
+    TableComponent,
+    ModalTalhaoComponent,
+    TableTalhaoComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

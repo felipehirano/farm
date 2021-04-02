@@ -1,7 +1,6 @@
 import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 
 import { Form } from '../form';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 @Component({
   selector: 'app-form',

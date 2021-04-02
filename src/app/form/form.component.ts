@@ -22,6 +22,7 @@ export class FormComponent implements OnInit{
       id: this.generateId(),
       name: this.model.name,
       area: this.model.area,
+      listTalhao: []
     });
 
     this.onUpdateLIst.emit(this.dataSource);

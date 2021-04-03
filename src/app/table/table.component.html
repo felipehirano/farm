@@ -10,10 +10,10 @@
       <td>{{item.name}}</td>
       <td>{{item.area}}</td>
       <td title="Adicionar Talhão">
-        <span (click)="openModalTalhao(mymodal, item)" class="clicavel material-icons">add_task</span>
+        <span (click)="openModalTalhao(modalTalhao, item)" class="clicavel material-icons">add_task</span>
       </td>
       <td title="Consultar Talhões">
-        <span class="clicavel material-icons">info</span>
+        <span (click)="openModalConsultaTalhao(modalConsulta, item)" class="clicavel material-icons">info</span>
       </td>
       <td title="Excluir Registro">
         <span (click)="removeFarm(item.id)" class="clicavel material-icons">delete</span>
@@ -22,8 +22,15 @@
   </tbody>
 </table>
 
-<ng-template #mymodal let-modal>
+<ng-template #modalTalhao let-modal>
   <app-modal-talhao (passTalhaoToTableFarm)="passTalhaoToTableFarm($event)"></app-modal-talhao>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+
+<ng-template #modalConsulta let-modal>
+  <app-modal-consulta-talhao [dataFarm]="dataFarm"></app-modal-consulta-talhao>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
   </div>

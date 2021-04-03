@@ -106,3 +106,15 @@ form .button input:hover {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.clicavel{
+  cursor: pointer;
+}
+
+tr th {
+  text-align: center;
+}
+
+tr td {
+  text-align: center;
+}

@@ -35,6 +35,9 @@
           <td>{{item.area}}</td>
           <td>{{item.qtdProdutos}}</td>
           <td>{{item.produtividade}}</td>
+          <td title="Excluir Registro">
+            <span (click)="removeTalhao(item.id)" class="clicavel material-icons">delete</span>
+          </td>
         </tr>
       </tbody>
     </table>

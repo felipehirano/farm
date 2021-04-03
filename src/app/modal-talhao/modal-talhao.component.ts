@@ -34,6 +34,14 @@ export class ModalTalhaoComponent implements OnInit {
     return Number((qtdProdutos/area).toFixed(2));
   }
 
+  removeTalhao(id: any): void {
+    this.dataSourceTalhao.forEach((item: { id: any; }, index: any) => {
+      if(item.id === id) this.dataSourceTalhao.splice(index, 1);
+    });
+
+    this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
+  }
+
   constructor() { }
 
   ngOnInit(): void {}

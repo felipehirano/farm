@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalTalhaoComponent } from './modal-talhao/modal-talhao.component';
 import { TableTalhaoComponent } from './table-talhao/table-talhao.component';
+import { ModalConsultaTalhaoComponent } from './modal-consulta-talhao/modal-consulta-talhao.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TableTalhaoComponent } from './table-talhao/table-talhao.component';
     FormComponent,
     TableComponent,
     ModalTalhaoComponent,
-    TableTalhaoComponent
+    TableTalhaoComponent,
+    ModalConsultaTalhaoComponent
   ],
   imports: [
     BrowserModule,

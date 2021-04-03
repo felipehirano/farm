@@ -1,0 +1,22 @@
+<div class="modal-body">
+  <div class="container">
+    <div class="title">Consulta de Talhões</div>
+    <p *ngIf="!dataFarm.listTalhao.length">Não há registros de talhões registrados para essa fazenda</p>
+    <table *ngIf="dataFarm.listTalhao.length" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Área</th>
+          <th>QtdProdutos</th>
+          <th>Produtividade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataFarm.listTalhao">
+          <td>{{item.area}}</td>
+          <td>{{item.qtdProdutos}}</td>
+          <td>{{item.produtividade}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

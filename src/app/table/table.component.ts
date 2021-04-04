@@ -60,8 +60,13 @@ export class TableComponent implements OnInit {
     this.dataSource.forEach((item: { id: any; listTalhao: { id: any; }[]; }) => {
       if(item.id === idFarm) {
         item.listTalhao = listTalhao;
+        this.addProdutividadeOnListFarm(item.listTalhao);
       }
     });
+  }
+
+  addProdutividadeOnListFarm(obj: { id: any; }[]){
+    console.log(obj);
   }
 
   ngOnInit() {}

@@ -5,7 +5,7 @@
     <table *ngIf="dataFarm.listTalhao.length" class="table table-striped">
       <thead>
         <tr>
-          <th>Área</th>
+          <th>Área(km²)</th>
           <th>QtdProdutos</th>
           <th>Produtividade</th>
         </tr>
@@ -14,7 +14,7 @@
         <tr *ngFor="let item of dataFarm.listTalhao">
           <td>{{item.area}}</td>
           <td>{{item.qtdProdutos}}</td>
-          <td>{{item.produtividade}}</td>
+          <td>{{item.produtividade}} prod/(km²)</td>
         </tr>
       </tbody>
     </table>

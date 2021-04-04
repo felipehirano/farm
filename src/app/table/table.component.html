@@ -30,7 +30,7 @@
   </table>
 
   <ng-template #modalTalhao let-modal>
-    <app-modal-talhao (passTalhaoToTableFarm)="passTalhaoToTableFarm($event)"></app-modal-talhao>
+    <app-modal-talhao [dataFarm]="dataFarm" (passTalhaoToTableFarm)="passTalhaoToTableFarm($event)"></app-modal-talhao>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fechar</button>
     </div>

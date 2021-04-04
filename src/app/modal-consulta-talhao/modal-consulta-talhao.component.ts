@@ -11,8 +11,6 @@ export class ModalConsultaTalhaoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.dataFarm);
-  }
+  ngOnInit(): void {}
 
 }

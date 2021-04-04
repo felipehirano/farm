@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormTalhao } from '../form';
 
 @Component({
@@ -9,6 +9,7 @@ import { FormTalhao } from '../form';
 export class ModalTalhaoComponent implements OnInit {
 
   @Output() passTalhaoToTableFarm = new EventEmitter<String>();
+  @Input() dataFarm:any;
 
   model = new FormTalhao(null, null, null);
   dataSourceTalhao:any = [];
@@ -44,6 +45,9 @@ export class ModalTalhaoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.dataFarm);
+    this.dataSourceTalhao = this.dataFarm.listTalhao;
+  }
 
 }

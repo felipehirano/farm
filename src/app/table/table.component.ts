@@ -19,6 +19,7 @@ export class TableComponent implements OnInit {
   constructor(private modalService: NgbModal) {}
 
   openModalTalhao(content: any, dados: any) {
+    this.dataFarm = dados;
     this.idFarm = dados.id;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

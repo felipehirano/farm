@@ -25,8 +25,6 @@ export class FormComponent implements OnInit{
       listTalhao: []
     });
 
-    console.log(this.dataSource);
-
     this.onUpdateLIst.emit(this.dataSource);
 
     this.model = new Form('', null);

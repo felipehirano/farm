@@ -15,7 +15,8 @@
       <tr *ngFor="let item of dataSource">
         <td>{{item.name}}</td>
         <td>{{item.area}}</td>
-        <td>{{item.produtividade}} prod/(km²)</td>
+        <td *ngIf="item.produtividade">{{item.produtividade}} prod/(km²)</td>
+        <td *ngIf="!item.produtividade">-</td>
         <td title="Adicionar Talhão">
           <span (click)="openModalTalhao(modalTalhao, item)" class="clicavel material-icons">add_task</span>
         </td>

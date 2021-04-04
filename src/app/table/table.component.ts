@@ -58,16 +58,27 @@ export class TableComponent implements OnInit {
   }
 
   addListTalhaoOnListFarm(listTalhao: { id: any; }[], idFarm: any): void{
-    this.dataSource.forEach((item: { id: any; listTalhao: { id: any; }[]; }) => {
+    this.dataSource.forEach((item: { id: any; listTalhao: { id: any; }[]; produtividade: number; }) => {
       if(item.id === idFarm) {
         item.listTalhao = listTalhao;
-        this.addProdutividadeOnListFarm(item.listTalhao);
+        item.produtividade = Number(this.calcProdutividadeFarm(item.listTalhao).toFixed(2));
       }
     });
   }
 
-  addProdutividadeOnListFarm(obj: { id: any; }[]){
-    console.log(obj);
+  addProdutividadeOnListFarm(list: { id: any; }[]){
+    this.calcProdutividadeFarm(list);
+    console.log(list);
+  }
+
+  calcProdutividadeFarm(listTalhao: any): number{
+    let somaProdutividade: number = 0;
+
+    listTalhao.forEach((item: { produtividade: number; }) => {
+      somaProdutividade = somaProdutividade + item.produtividade;
+    });
+
+    return somaProdutividade;
   }
 
   ngOnInit() {}

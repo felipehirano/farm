@@ -46,7 +46,6 @@ export class ModalTalhaoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.dataFarm);
     this.dataSourceTalhao = this.dataFarm.listTalhao;
   }
 

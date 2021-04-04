@@ -11,20 +11,46 @@ export class ModalTalhaoComponent implements OnInit {
   @Output() passTalhaoToTableFarm = new EventEmitter<String>();
   @Input() dataFarm:any;
 
+  maxAreaTalhao: any;
+  showMessageRangeMax: boolean = false;
+
   model = new FormTalhao(null, null, null);
   dataSourceTalhao:any = [];
 
   addTalhao(): void {
 
-    this.dataSourceTalhao.push({
-      id: this.generateId(),
-      area: this.model.area,
-      qtdProdutos: this.model.qtdProdutos,
-      produtividade: this.calcProdutividade(this.model.area, this.model.qtdProdutos)
-    });
+    if(this.checkMaxArea(this.dataSourceTalhao, this.model.area)) {
+      this.dataSourceTalhao.push({
+        id: this.generateId(),
+        area: this.model.area,
+        qtdProdutos: this.model.qtdProdutos,
+        produtividade: this.calcProdutividade(this.model.area, this.model.qtdProdutos)
+      });
 
-    this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
+      this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
+      this.showMessageRangeMax = false;
+    } else {
+      this.showMessageRangeMax = true;
+    }
+
     this.model = new FormTalhao(null, null, null);
+  }
+
+  checkMaxArea(listTalhao: any[], areaNewTalhao: number): boolean {
+    let totalArea = 0;
+    let retorno = true;
+
+    if(listTalhao.length > 0){
+      listTalhao.forEach((item: { area: number; }) => {
+        totalArea = totalArea + item.area;
+      });
+    }
+
+    totalArea = totalArea + areaNewTalhao;
+
+    if(totalArea > this.maxAreaTalhao) retorno = false;
+
+    return retorno;
   }
 
   generateId(): string{
@@ -46,6 +72,7 @@ export class ModalTalhaoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.maxAreaTalhao = this.dataFarm.area;
     this.dataSourceTalhao = this.dataFarm.listTalhao;
   }
 

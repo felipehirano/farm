@@ -119,6 +119,11 @@ tr td {
   text-align: center;
 }
 
+div p {
+  text-align: center;
+}
+
 .registros-tabela {
   margin-top: 30px;
 }
+

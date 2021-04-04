@@ -68,7 +68,6 @@ export class TableComponent implements OnInit {
 
   addProdutividadeOnListFarm(list: { id: any; }[]){
     this.calcProdutividadeFarm(list);
-    console.log(list);
   }
 
   calcProdutividadeFarm(listTalhao: any): number{

@@ -19,8 +19,14 @@ describe('FormComponent', () => {
     fixture.detectChanges();
   });
 
-  it(`Primeiro test form'`, () => {
+  it(`Testando init'`, () => {
+    component.ngOnInit();
+  })
 
+  it(`Testando addFarm'`, () => {
+    component.dataSource = [];
+    component.addFarm();
+    expect(component.dataSource.length).toBeGreaterThanOrEqual(1);
   });
 
 });

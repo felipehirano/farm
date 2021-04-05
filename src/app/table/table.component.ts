@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
       localStorage.setItem('farm', JSON.stringify(this.dataSource));
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      localStorage.setItem('farm', JSON.stringify(this.dataFarm));
+      localStorage.setItem('farm', JSON.stringify(this.dataSource));
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }

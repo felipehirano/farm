@@ -16,10 +16,21 @@ describe('ModalConsultaTalhaoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ModalConsultaTalhaoComponent);
     component = fixture.componentInstance;
+    component.dataFarm =
+    {
+      id: "XXX",
+      name: 'DONO 1',
+      area: 50,
+      listTalhao: [
+        {id: "YYY",
+          area: 10,
+          qtdProdutos: 5,
+          produtividade: 0.5,
+          idFarm: "xxx"
+        }
+      ]
+    };
+
     fixture.detectChanges();
   });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });

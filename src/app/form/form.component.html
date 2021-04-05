@@ -12,6 +12,7 @@
         <span class="details">Área da Fazenda:(km²)</span>
         <input type="number"
         required
+        min="0"
         onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
         [(ngModel)]="model.area" name="area">
       </div>

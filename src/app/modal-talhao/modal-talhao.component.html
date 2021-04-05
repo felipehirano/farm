@@ -6,6 +6,7 @@
         <div class="input-box">
           <span class="details">Área do Talhão:(km²)</span>
           <input type="number"
+          min="0"
           required
           onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
           [(ngModel)]="model.area" name="area">
@@ -13,6 +14,7 @@
         <div class="input-box">
           <span class="details">Qtd.Produtos</span>
           <input type="number"
+          min="0"
           onkeydown="return event.keyCode !== 69 && event.keyCode !== 187 && event.keyCode !== 189"
           required
           [(ngModel)]="model.qtdProdutos" name="qtdProdutos">

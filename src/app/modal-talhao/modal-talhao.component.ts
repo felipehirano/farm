@@ -30,7 +30,7 @@ export class ModalTalhaoComponent implements OnInit {
       });
 
       this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
-      localStorage.setItem('talhao', JSON.stringify(this.dataSourceTalhao));
+      // localStorage.setItem('farm', JSON.stringify(this.dataFarm));
       this.showMessageRangeMax = false;
     } else {
       this.showMessageRangeMax = true;
@@ -68,11 +68,16 @@ export class ModalTalhaoComponent implements OnInit {
     this.dataSourceTalhao.forEach((item: { id: any; }, index: any) => {
       if(item.id === id){
         this.dataSourceTalhao.splice(index, 1);
-        localStorage.setItem('talhao', JSON.stringify(this.dataSourceTalhao));
       }
     });
 
     this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
+  }
+
+  getListTalhao() {
+    let listTalhoes = JSON.parse(localStorage.getItem('farm') || '[]');
+
+    console.log(listTalhoes);
   }
 
   constructor() { }
@@ -80,9 +85,11 @@ export class ModalTalhaoComponent implements OnInit {
   ngOnInit(): void {
     this.maxAreaTalhao = this.dataFarm.area;
     this.idFarm = this.dataFarm.id;
-    // this.dataSourceTalhao = this.dataFarm.listTalhao;
-    console.log(this.dataFarm.listTalhao);
-    this.dataSourceTalhao = JSON.parse(localStorage.getItem('talhao') || this.dataFarm.listTalhao);
+    this.dataSourceTalhao = this.dataFarm.listTalhao;
+
+    this.getListTalhao();
+
+    // console.log(this.dataFarm.listTalhao);
   }
 
 }

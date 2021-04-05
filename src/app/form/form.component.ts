@@ -34,8 +34,6 @@ export class FormComponent implements OnInit{
     return '_' + Math.random().toString(36).substr(2, 9);
   }
 
-  ngOnInit() {
-    this.dataSource = JSON.parse(localStorage.getItem('farm') || '{}');
-  }
+  ngOnInit() {}
 
 }

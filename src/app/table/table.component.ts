@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import {FarmService} from '../farm.service';
 
 @Component({
   selector: 'app-table',
@@ -13,19 +14,19 @@ export class TableComponent implements OnInit {
   @Input() dataSource:any;
   @Input() dataFarm:any = [];
 
-  dataSourceTalhao:any;
-
   closeResult: any;
   idFarm: any;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private farmService:FarmService) {}
 
   openModalTalhao(content: any, dados: any) {
     this.dataFarm = dados;
     this.idFarm = dados.id;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      localStorage.setItem('farm', JSON.stringify(this.dataSource));
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
+      localStorage.setItem('farm', JSON.stringify(this.dataFarm));
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
@@ -67,31 +68,11 @@ export class TableComponent implements OnInit {
     this.dataSource.forEach((item: { id: any; listTalhao: { id: any; }[]; produtividade: number; }) => {
       if(item.id === idFarm) {
         item.listTalhao = listTalhao;
-        item.produtividade = Number(this.calcProdutividadeFarm(item.listTalhao).toFixed(2));
+        item.produtividade = Number(this.farmService.calcProdutividadeFarm(item.listTalhao).toFixed(2));
       }
     });
   }
 
-  addProdutividadeOnListFarm(list: { id: any; }[]){
-    this.calcProdutividadeFarm(list);
-  }
-
-  calcProdutividadeFarm(listTalhao: any): number{
-    let somaProdutividade: number = 0;
-
-    listTalhao.forEach((item: { produtividade: number; }) => {
-      somaProdutividade = somaProdutividade + item.produtividade;
-    });
-
-    return somaProdutividade;
-  }
-
-
-  ngOnInit() {
-    this.dataSource = JSON.parse(localStorage.getItem('farm') || '{}');
-    this.dataSourceTalhao = JSON.parse(localStorage.getItem('talhao') || '[]');
-
-    console.log(this.dataSourceTalhao);
-  }
+  ngOnInit() {}
 
 }

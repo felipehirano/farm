@@ -30,7 +30,6 @@ export class ModalTalhaoComponent implements OnInit {
       });
 
       this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
-      // localStorage.setItem('farm', JSON.stringify(this.dataFarm));
       this.showMessageRangeMax = false;
     } else {
       this.showMessageRangeMax = true;

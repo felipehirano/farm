@@ -73,22 +73,12 @@ export class ModalTalhaoComponent implements OnInit {
     this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
   }
 
-  getListTalhao() {
-    let listTalhoes = JSON.parse(localStorage.getItem('farm') || '[]');
-
-    console.log(listTalhoes);
-  }
-
   constructor() { }
 
   ngOnInit(): void {
     this.maxAreaTalhao = this.dataFarm.area;
     this.idFarm = this.dataFarm.id;
     this.dataSourceTalhao = this.dataFarm.listTalhao;
-
-    this.getListTalhao();
-
-    // console.log(this.dataFarm.listTalhao);
   }
 
 }

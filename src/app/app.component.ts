@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = JSON.parse(localStorage.getItem('farm') || '[]');
-
-    console.log(this.dataSource);
-    // this.dataSourceTalhao = JSON.parse(localStorage.getItem('talhao') || '[]');
-
     this.getProdutividade(this.dataSource, this.dataSourceTalhao);
   }
 }

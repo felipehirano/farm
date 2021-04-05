@@ -13,6 +13,8 @@ export class TableComponent implements OnInit {
   @Input() dataSource:any;
   @Input() dataFarm:any = [];
 
+  dataSourceTalhao:any;
+
   closeResult: any;
   idFarm: any;
 
@@ -49,7 +51,11 @@ export class TableComponent implements OnInit {
 
   removeFarm(id: any): void {
     this.dataSource.forEach((item: { id: any; }, index: any) => {
-      if(item.id === id) this.dataSource.splice(index, 1);
+      if(item.id === id) {
+
+        this.dataSource.splice(index, 1);
+        localStorage.setItem('farm', JSON.stringify(this.dataSource));
+      }
     });
   }
 
@@ -80,6 +86,12 @@ export class TableComponent implements OnInit {
     return somaProdutividade;
   }
 
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.dataSource = JSON.parse(localStorage.getItem('farm') || '{}');
+    this.dataSourceTalhao = JSON.parse(localStorage.getItem('talhao') || '[]');
+
+    console.log(this.dataSourceTalhao);
+  }
 
 }

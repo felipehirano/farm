@@ -12,7 +12,7 @@ export class FormComponent implements OnInit{
 
   @Input() dataSource:any;
   @Input() nome: any;
-  @Output() onUpdateLIst: any = new EventEmitter();
+  @Output() onUpdateList: any = new EventEmitter();
 
   model = new Form('', null);
 
@@ -25,8 +25,8 @@ export class FormComponent implements OnInit{
       listTalhao: []
     });
 
-    this.onUpdateLIst.emit(this.dataSource);
-
+    localStorage.setItem('farm', JSON.stringify(this.dataSource));
+    this.onUpdateList.emit(this.dataSource);
     this.model = new Form('', null);
   }
 
@@ -35,6 +35,7 @@ export class FormComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.dataSource = JSON.parse(localStorage.getItem('farm') || '{}');
   }
 
 }

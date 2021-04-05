@@ -12,6 +12,7 @@ export class ModalTalhaoComponent implements OnInit {
   @Input() dataFarm:any;
 
   maxAreaTalhao: any;
+  idFarm: string = '';
   showMessageRangeMax: boolean = false;
 
   model = new FormTalhao(null, null, null);
@@ -24,10 +25,12 @@ export class ModalTalhaoComponent implements OnInit {
         id: this.generateId(),
         area: this.model.area,
         qtdProdutos: this.model.qtdProdutos,
-        produtividade: this.calcProdutividade(this.model.area, this.model.qtdProdutos)
+        produtividade: this.calcProdutividade(this.model.area, this.model.qtdProdutos),
+        idFarm: this.idFarm
       });
 
       this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
+      localStorage.setItem('talhao', JSON.stringify(this.dataSourceTalhao));
       this.showMessageRangeMax = false;
     } else {
       this.showMessageRangeMax = true;
@@ -63,7 +66,10 @@ export class ModalTalhaoComponent implements OnInit {
 
   removeTalhao(id: any): void {
     this.dataSourceTalhao.forEach((item: { id: any; }, index: any) => {
-      if(item.id === id) this.dataSourceTalhao.splice(index, 1);
+      if(item.id === id){
+        this.dataSourceTalhao.splice(index, 1);
+        localStorage.setItem('talhao', JSON.stringify(this.dataSourceTalhao));
+      }
     });
 
     this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
@@ -73,7 +79,10 @@ export class ModalTalhaoComponent implements OnInit {
 
   ngOnInit(): void {
     this.maxAreaTalhao = this.dataFarm.area;
-    this.dataSourceTalhao = this.dataFarm.listTalhao;
+    this.idFarm = this.dataFarm.id;
+    // this.dataSourceTalhao = this.dataFarm.listTalhao;
+    console.log(this.dataFarm.listTalhao);
+    this.dataSourceTalhao = JSON.parse(localStorage.getItem('talhao') || this.dataFarm.listTalhao);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormTalhao } from '../form';
+import { FarmService } from '../farm.service'
 
 @Component({
   selector: 'app-modal-talhao',
@@ -18,11 +19,13 @@ export class ModalTalhaoComponent implements OnInit {
   model = new FormTalhao(null, null, null);
   dataSourceTalhao:any = [];
 
+  constructor(private farmService:FarmService){}
+
   addTalhao(): void {
 
     if(this.checkMaxArea(this.dataSourceTalhao, this.model.area)) {
       this.dataSourceTalhao.push({
-        id: this.generateId(),
+        id: this.farmService.generateId(),
         area: this.model.area,
         qtdProdutos: this.model.qtdProdutos,
         produtividade: this.calcProdutividade(this.model.area, this.model.qtdProdutos),
@@ -55,10 +58,6 @@ export class ModalTalhaoComponent implements OnInit {
     return retorno;
   }
 
-  generateId(): string{
-    return '_' + Math.random().toString(36).substr(2, 9);
-  }
-
   calcProdutividade(area:any, qtdProdutos: any): number {
     return Number((qtdProdutos/area).toFixed(2));
   }
@@ -72,8 +71,6 @@ export class ModalTalhaoComponent implements OnInit {
 
     this.passTalhaoToTableFarm.emit(this.dataSourceTalhao);
   }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.maxAreaTalhao = this.dataFarm.area;

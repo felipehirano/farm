@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 
 import { Form } from '../form';
+import { FarmService } from '../farm.service';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +10,8 @@ import { Form } from '../form';
 })
 
 export class FormComponent implements OnInit{
+
+  constructor(private farmService:FarmService){}
 
   @Input() dataSource:any;
   @Input() nome: any;
@@ -19,7 +22,7 @@ export class FormComponent implements OnInit{
   addFarm(): void {
 
     this.dataSource.push({
-      id: this.generateId(),
+      id: this.farmService.generateId(),
       name: this.model.name,
       area: this.model.area,
       listTalhao: []
@@ -28,10 +31,6 @@ export class FormComponent implements OnInit{
     localStorage.setItem('farm', JSON.stringify(this.dataSource));
     this.onUpdateList.emit(this.dataSource);
     this.model = new Form('', null);
-  }
-
-  generateId(): string{
-    return '_' + Math.random().toString(36).substr(2, 9);
   }
 
   ngOnInit() {}

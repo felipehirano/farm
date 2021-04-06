@@ -19,7 +19,7 @@ describe('TableTalhaoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Teste init', () => {
     expect(component).toBeTruthy();
   });
 });
